@@ -1,0 +1,7 @@
+--check-leaks
+--colors
+--growl
+--recursive
+--reporter spec
+--ui bdd
+--watch
