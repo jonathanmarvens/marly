@@ -37,7 +37,7 @@ Object.defineProperties(MinkowskiDistance.prototype, {
       sum = 0;
 
       for (var scoreName in x) {
-        if (y.hasOwnProperty(scoreName)) {
+        if (x.hasOwnProperty(scoreName) && y.hasOwnProperty(scoreName)) {
           commonScores = true;
 
           sum = sum + Math.pow(
