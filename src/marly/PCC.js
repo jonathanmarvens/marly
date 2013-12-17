@@ -102,22 +102,16 @@ Object.defineProperties(PCC.prototype, {
     configurable: false,
     enumerable: false,
     value: function (x, y) {
-      var
-        r
-      ;
-
       switch (this.type) {
         case PCC.types.APPROXIMATE:
-          r = this._computeApproximate(x, y);
+          return this._computeApproximate(x, y);
 
           break;
         case PCC.types.EXACT:
-          r = this._computeExact(x, y);
+          return this._computeExact(x, y);
 
           break;
       }
-
-      return r;
     },
     writable: false
   }
