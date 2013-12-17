@@ -49,16 +49,12 @@ Object.defineProperties(PCC.prototype, {
       denominatorSum2 = 0;
       denominatorSum3 = 0;
       denominatorSum4 = 0;
+      n = 0;
       numeratorSum1 = 0;
       numeratorSum2 = 0;
       numeratorSum3 = 0;
       tempX = {};
       tempY = {};
-      n = 0;
-
-      /**
-       * TODO: Figure out how to get rid of some loops.
-       */
 
       for (var scoreName in x) {
         if (x.hasOwnProperty(scoreName) && y.hasOwnProperty(scoreName)) {
@@ -72,40 +68,17 @@ Object.defineProperties(PCC.prototype, {
       y = tempY;
 
       for (var scoreName in x) {
-        if (x.hasOwnProperty(scoreName) && y.hasOwnProperty(scoreName)) {
+        if (x.hasOwnProperty(scoreName)) {
           numeratorSum1 = numeratorSum1 + (x[scoreName] * y[scoreName]);
-        }
-      }
-
-      for (var scoreName in x) {
-        if (x.hasOwnProperty(scoreName)) {
           numeratorSum2 = numeratorSum2 + x[scoreName];
-        }
-      }
-
-
-      for (var scoreName in y) {
-        if (y.hasOwnProperty(scoreName)) {
           numeratorSum3 = numeratorSum3 + y[scoreName];
-        }
-      }
-
-      numerator = numeratorSum1 - ((numeratorSum2 * numeratorSum3) / n);
-
-      for (var scoreName in x) {
-        if (x.hasOwnProperty(scoreName)) {
           denominatorSum1 = denominatorSum1 + Math.pow(x[scoreName], 2);
-        }
-      }
-
-      denominatorSum2 = numeratorSum2;
-
-      for (var scoreName in y) {
-        if (y.hasOwnProperty(scoreName)) {
           denominatorSum3 = denominatorSum3 + Math.pow(y[scoreName], 2);
         }
       }
 
+      numerator = numeratorSum1 - ((numeratorSum2 * numeratorSum3) / n);
+      denominatorSum2 = numeratorSum2;
       denominatorSum4 = numeratorSum3;
 
       denominator = Math.sqrt(denominatorSum1 - (
