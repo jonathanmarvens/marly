@@ -1,6 +1,15 @@
 'use strict';
 
-function MinkowskiDistance() {}
+function MinkowskiDistance() {
+  Object.defineProperties(this, {
+    type: {
+      configurable: true,
+      enumerable: false,
+      value: MinkowskiDistance.types.MANHATTAN,
+      writable: true
+    }
+  });
+}
 
 Object.defineProperties(MinkowskiDistance, {
   types: {
@@ -124,12 +133,6 @@ Object.defineProperties(MinkowskiDistance.prototype, {
       return distances;
     },
     writable: false
-  },
-  type: {
-    configurable: true,
-    enumerable: true,
-    value: null,
-    writable: true
   }
 });
 
