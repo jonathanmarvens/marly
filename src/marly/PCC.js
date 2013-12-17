@@ -40,7 +40,6 @@ Object.defineProperties(PCC.prototype, {
         numeratorSum1,
         numeratorSum2,
         numeratorSum3,
-        r,
         tempX,
         tempY
       ;
@@ -87,9 +86,7 @@ Object.defineProperties(PCC.prototype, {
         Math.pow(denominatorSum4, 2) / n
       ));
 
-      r = numerator / denominator;
-
-      return r;
+      return (numerator / denominator);
     },
     writable: false
   },
