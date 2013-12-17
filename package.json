@@ -11,8 +11,8 @@
     "url": "https://github.com/jonathanmarvens/marly/issues"
   },
   "dependencies": {
-    "chalk": "0.3.x",
-    "commander": "2.0.x"
+    "chalk": "0.4.x",
+    "commander": "2.1.x"
   },
   "description": "Marly, the micro data mining library.",
   "devDependencies": {
