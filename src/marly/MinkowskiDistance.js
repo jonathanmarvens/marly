@@ -54,48 +54,7 @@ Object.defineProperties(MinkowskiDistance.prototype, {
     },
     writable: false
   },
-  recommend: {
-    configurable: false,
-    enumerable: false,
-    value: function (id, objects) {
-      var
-        neighborId,
-        neighborScores,
-        recommendations,
-        subjectScores
-      ;
-
-      neighborId = this.sortedNeighbors(id, objects)[0].id;
-      neighborScores = objects[neighborId];
-      recommendations = [];
-      subjectScores = objects[id];
-
-      for (var scoreName in neighborScores) {
-        if (neighborScores.hasOwnProperty(scoreName) && (! subjectScores.hasOwnProperty(scoreName))) {
-          recommendations.push({
-            score: {
-              name: scoreName,
-              value: neighborScores[scoreName]
-            }
-          });
-        }
-      }
-
-      recommendations.sort(function (a, b) {
-        if (a.score.value > b.score.value) {
-          return -1;
-        } else if (a.score.value < b.score.value) {
-          return 1;
-        } else {
-          return 0;
-        }
-      });
-
-      return recommendations;
-    },
-    writable: false
-  },
-  sortedNeighbors: {
+  neighbors: {
     configurable: false,
     enumerable: false,
     value: function (id, objects) {
@@ -131,6 +90,47 @@ Object.defineProperties(MinkowskiDistance.prototype, {
       });
 
       return distances;
+    },
+    writable: false
+  },
+  recommend: {
+    configurable: false,
+    enumerable: false,
+    value: function (id, objects) {
+      var
+        neighborId,
+        neighborScores,
+        recommendations,
+        subjectScores
+      ;
+
+      neighborId = this.neighbors(id, objects)[0].id;
+      neighborScores = objects[neighborId];
+      recommendations = [];
+      subjectScores = objects[id];
+
+      for (var scoreName in neighborScores) {
+        if (neighborScores.hasOwnProperty(scoreName) && (! subjectScores.hasOwnProperty(scoreName))) {
+          recommendations.push({
+            score: {
+              name: scoreName,
+              value: neighborScores[scoreName]
+            }
+          });
+        }
+      }
+
+      recommendations.sort(function (a, b) {
+        if (a.score.value > b.score.value) {
+          return -1;
+        } else if (a.score.value < b.score.value) {
+          return 1;
+        } else {
+          return 0;
+        }
+      });
+
+      return recommendations;
     },
     writable: false
   }
