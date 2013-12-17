@@ -1,0 +1,52 @@
+{
+  "author": {
+    "email": "jonathan@belairlabs.com",
+    "name": "Jonathan Barronville",
+    "url": "http://乔纳森.com"
+  },
+  "bin": {
+    "marly": "./bin/marly"
+  },
+  "bugs": {
+    "url": "https://github.com/jonathanmarvens/marly/issues"
+  },
+  "dependencies": {
+    "chalk": "0.3.x",
+    "commander": "2.0.x"
+  },
+  "description": "Marly, the micro data mining library.",
+  "devDependencies": {
+    "chai": "1.8.x",
+    "mocha": "1.15.x",
+    "mockery": "1.4.x",
+    "sinon": "1.7.x"
+  },
+  "engineStrict": true,
+  "engines": {
+    "node": "0.10.x"
+  },
+  "homepage": "https://github.com/jonathanmarvens/marly",
+  "keywords": [
+    "data",
+    "micro",
+    "mining"
+  ],
+  "license": {
+    "type": "MIT",
+    "url": "https://github.com/jonathanmarvens/marly/blob/master/LICENSE"
+  },
+  "main": "./src/marly.js",
+  "name": "marly",
+  "optionalDependencies": {
+    "NodObjC": "0.0.x"
+  },
+  "preferGlobal": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jonathanmarvens/marly.git"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "version": "0.0.1"
+}
