@@ -14,8 +14,8 @@ CosineSimilarity.prototype.compute = function (x, y) {
   ;
 
   dotProductXYScores = 0;
-  xLengthSum = 0;
-  yLengthSum = 0;
+  xLengthSum         = 0;
+  yLengthSum         = 0;
 
   for (var scoreName in x) {
     if (x.hasOwnProperty(scoreName)) {
@@ -24,15 +24,15 @@ CosineSimilarity.prototype.compute = function (x, y) {
       }
 
       dotProductXYScores = dotProductXYScores + (x[scoreName] * y[scoreName]);
-      xLengthSum = xLengthSum + Math.pow(x[scoreName], 2);
-      yLengthSum = yLengthSum + Math.pow(y[scoreName], 2);
+      xLengthSum         = xLengthSum + Math.pow(x[scoreName], 2);
+      yLengthSum         = yLengthSum + Math.pow(y[scoreName], 2);
     }
   }
 
-  xLength = Math.sqrt(xLengthSum);
-  yLength = Math.sqrt(yLengthSum);
+  xLength     = Math.sqrt(xLengthSum);
+  yLength     = Math.sqrt(yLengthSum);
   denominator = xLength * yLength;
-  numerator = dotProductXYScores;
+  numerator   = dotProductXYScores;
 
   return (numerator / denominator);
 };

@@ -32,23 +32,22 @@ PCC.prototype._computeApproximate = function (x, y) {
   denominatorSum2 = 0;
   denominatorSum3 = 0;
   denominatorSum4 = 0;
-  n = 0;
-  numeratorSum1 = 0;
-  numeratorSum2 = 0;
-  numeratorSum3 = 0;
+  n               = 0;
+  numeratorSum1   = 0;
+  numeratorSum2   = 0;
+  numeratorSum3   = 0;
 
   for (var scoreName in x) {
     if (x.hasOwnProperty(scoreName) && y.hasOwnProperty(scoreName)) {
-      n = n + 1;
-      numeratorSum1 = numeratorSum1 + (x[scoreName] * y[scoreName]);
-      numeratorSum2 = numeratorSum2 + x[scoreName];
-      numeratorSum3 = numeratorSum3 + y[scoreName];
+      n               = n + 1;
       denominatorSum1 = denominatorSum1 + Math.pow(x[scoreName], 2);
       denominatorSum3 = denominatorSum3 + Math.pow(y[scoreName], 2);
+      numeratorSum1   = numeratorSum1 + (x[scoreName] * y[scoreName]);
+      numeratorSum2   = numeratorSum2 + x[scoreName];
+      numeratorSum3   = numeratorSum3 + y[scoreName];
     }
   }
 
-  numerator = numeratorSum1 - ((numeratorSum2 * numeratorSum3) / n);
   denominatorSum2 = numeratorSum2;
   denominatorSum4 = numeratorSum3;
 
@@ -57,6 +56,8 @@ PCC.prototype._computeApproximate = function (x, y) {
   )) * Math.sqrt(denominatorSum3 - (
     Math.pow(denominatorSum4, 2) / n
   ));
+
+  numerator = numeratorSum1 - ((numeratorSum2 * numeratorSum3) / n);
 
   return (numerator / denominator);
 };
@@ -75,14 +76,14 @@ PCC.prototype._computeExact = function (x, y) {
 
   denominatorSum1 = 0;
   denominatorSum2 = 0;
-  n = 0;
-  numeratorSum = 0;
-  xBar = 0;
-  yBar = 0;
+  n               = 0;
+  numeratorSum    = 0;
+  xBar            = 0;
+  yBar            = 0;
 
   for (var scoreName in x) {
     if (x.hasOwnProperty(scoreName) && y.hasOwnProperty(scoreName)) {
-      n = n + 1;
+      n    = n + 1;
       xBar = xBar + x[scoreName];
       yBar = yBar + y[scoreName];
     }
@@ -93,14 +94,14 @@ PCC.prototype._computeExact = function (x, y) {
 
   for (var scoreName in x) {
     if (x.hasOwnProperty(scoreName) && y.hasOwnProperty(scoreName)) {
-      numeratorSum = numeratorSum + ((x[scoreName] - xBar) * (y[scoreName] - yBar));
       denominatorSum1 = denominatorSum1 + Math.pow((x[scoreName] - xBar), 2);
       denominatorSum2 = denominatorSum2 + Math.pow((y[scoreName] - yBar), 2);
+      numeratorSum    = numeratorSum + ((x[scoreName] - xBar) * (y[scoreName] - yBar));
     }
   }
 
   denominator = Math.sqrt(denominatorSum1) * Math.sqrt(denominatorSum2);
-  numerator = numeratorSum;
+  numerator   = numeratorSum;
 
   return (numerator / denominator);
 };

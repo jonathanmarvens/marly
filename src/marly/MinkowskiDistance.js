@@ -20,7 +20,7 @@ MinkowskiDistance.prototype.compute = function (x, y) {
   ;
 
   commonScores = false;
-  sum = 0;
+  sum          = 0;
 
   for (var scoreName in x) {
     if (x.hasOwnProperty(scoreName) && y.hasOwnProperty(scoreName)) {
@@ -82,10 +82,10 @@ MinkowskiDistance.prototype.recommend = function (id, objects) {
     subjectScores
   ;
 
-  neighborId = this.neighbors(id, objects)[0].id;
-  neighborScores = objects[neighborId];
+  neighborId      = this.neighbors(id, objects)[0].id;
+  neighborScores  = objects[neighborId];
   recommendations = [];
-  subjectScores = objects[id];
+  subjectScores   = objects[id];
 
   for (var scoreName in neighborScores) {
     if (neighborScores.hasOwnProperty(scoreName) && (! subjectScores.hasOwnProperty(scoreName))) {
