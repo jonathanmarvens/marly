@@ -1,0 +1,47 @@
+'use strict';
+
+function CosineSimilarity() {}
+
+Object.defineProperties(CosineSimilarity.prototype, {
+  compute: {
+    configurable: false,
+    enumerable: false,
+    value: function (x, y) {
+      var
+        denominator,
+        dotProductXYScores,
+        numerator,
+        xLength,
+        xLengthSum,
+        yLength,
+        yLengthSum
+      ;
+
+      dotProductXYScores = 0;
+      xLengthSum = 0;
+      yLengthSum = 0;
+
+      for (var scoreName in x) {
+        if (x.hasOwnProperty(scoreName)) {
+          if (! y.hasOwnProperty(scoreName)) {
+            y[scoreName] = 0;
+          }
+
+          dotProductXYScores = dotProductXYScores + (x[scoreName] * y[scoreName]);
+          xLengthSum = xLengthSum + Math.pow(x[scoreName], 2);
+          yLengthSum = yLengthSum + Math.pow(y[scoreName], 2);
+        }
+      }
+
+      numerator = dotProductXYScores;
+      xLength = Math.sqrt(xLengthSum);
+      yLength = Math.sqrt(yLengthSum);
+      denominator = xLength * yLength;
+
+      return (numerator / denominator);
+    },
+    writable: false
+  }
+});
+
+module.exports = CosineSimilarity;
