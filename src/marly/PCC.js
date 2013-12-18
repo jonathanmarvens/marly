@@ -39,9 +39,7 @@ Object.defineProperties(PCC.prototype, {
         numerator,
         numeratorSum1,
         numeratorSum2,
-        numeratorSum3,
-        tempX,
-        tempY
+        numeratorSum3
       ;
 
       denominatorSum1 = 0;
@@ -52,22 +50,10 @@ Object.defineProperties(PCC.prototype, {
       numeratorSum1 = 0;
       numeratorSum2 = 0;
       numeratorSum3 = 0;
-      tempX = {};
-      tempY = {};
 
       for (var scoreName in x) {
         if (x.hasOwnProperty(scoreName) && y.hasOwnProperty(scoreName)) {
-          tempX[scoreName] = x[scoreName];
-          tempY[scoreName] = y[scoreName];
           n = n + 1;
-        }
-      }
-
-      x = tempX;
-      y = tempY;
-
-      for (var scoreName in x) {
-        if (x.hasOwnProperty(scoreName)) {
           numeratorSum1 = numeratorSum1 + (x[scoreName] * y[scoreName]);
           numeratorSum2 = numeratorSum2 + x[scoreName];
           numeratorSum3 = numeratorSum3 + y[scoreName];
