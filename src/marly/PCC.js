@@ -80,7 +80,47 @@ Object.defineProperties(PCC.prototype, {
     configurable: false,
     enumerable: false,
     value: function (x, y) {
-      // TODO: Implement this function.
+      var
+        denominator,
+        denominatorSum1,
+        denominatorSum2,
+        n,
+        numerator,
+        numeratorSum,
+        xBar,
+        yBar
+      ;
+
+      denominatorSum1 = 0;
+      denominatorSum2 = 0;
+      n = 0;
+      numeratorSum = 0;
+      xBar = 0;
+      yBar = 0;
+
+      for (var scoreName in x) {
+        if (x.hasOwnProperty(scoreName) && y.hasOwnProperty(scoreName)) {
+          n = n + 1;
+          xBar = xBar + x[scoreName];
+          yBar = yBar + y[scoreName];
+        }
+      }
+
+      xBar = xBar / n;
+      yBar = yBar / n;
+
+      for (var scoreName in x) {
+        if (x.hasOwnProperty(scoreName) && y.hasOwnProperty(scoreName)) {
+          numeratorSum = numeratorSum + ((x[scoreName] - xBar) * (y[scoreName] - yBar));
+          denominatorSum1 = denominatorSum1 + Math.pow((x[scoreName] - xBar), 2);
+          denominatorSum2 = denominatorSum2 + Math.pow((y[scoreName] - yBar), 2);
+        }
+      }
+
+      numerator = numeratorSum;
+      denominator = Math.sqrt(denominatorSum1) * Math.sqrt(denominatorSum2);
+
+      return (numerator / denominator);
     },
     writable: false
   },
